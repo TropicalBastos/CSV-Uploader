@@ -4,9 +4,16 @@
     var fileUpload = document.getElementById("file-upload");
     var importFile = document.getElementById("importfile");
     var prompt = document.getElementById("file-prompt");
+    var logout = document.getElementById("logout-button");
+    var logoutYes = document.getElementById("logout-yes");
+    var logoutNo = document.getElementById("logout-no");
+    var logoutPrompt = document.getElementsByClassName("logout-prompt")[0];
     fileUpload.addEventListener("change", fileListener);
     importFile.addEventListener("mouseenter", promptListener);
     importFile.addEventListener("mouseleave", promptListener);
+    logout.addEventListener("click", logoutListener);
+    logoutYes.addEventListener("click", logoutUser);
+    logoutNo.addEventListener("click", closeLogoutPrompt);
 
     function fileListener(){
         var file = fileUpload.value;
@@ -38,6 +45,18 @@
         }else if(e.type === "mouseleave"){
             prompt.style.display = "none";
         }
+    }
+
+    function logoutListener(){
+        logoutPrompt.style.display = "block";
+    }
+
+    function closeLogoutPrompt(){
+        logoutPrompt.style.display = "none";
+    }
+
+    function logoutUser(){
+        window.location = "../index.php?logout=a";
     }
 
 })(window);

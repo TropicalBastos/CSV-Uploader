@@ -2,6 +2,17 @@
 if(!isset($_SESSION)){
     session_start();
   }
+
+if(!isset($_SESSION['user'])){
+  header("Location: ../index.php");
+}
+
+require("../constants.php");
+
+$conn = mysqli_connect(SERVER, ADMIN, ADMINPASS, DB);
+$query = "SELECT * FROM " . $_SESSION['user'] . ";";
+$result = $conn->query($query);
+
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +28,7 @@ if(!isset($_SESSION)){
   <body>
 
       <nav class="navbar">
-        <span><i class="fa fa-sign-out"></i>   Logout</span>
+        <span id="logout-button"><i class="fa fa-sign-out"></i>   Logout</span>
       </nav>
       <h1 id="header">Welcome, <?php echo $_SESSION['user']?></h1>
 
@@ -31,8 +42,34 @@ if(!isset($_SESSION)){
             </label>
             <p class="error">*Wrong file type, only CSV allowed</p>
             <button type="submit" id="upload" class="nav-button" disabled>Upload</button>
+            <button class="nav-button delete">Delete Record</button>
+            <button class="nav-button delete">Delete All</button>
           </form>
         </div>
+        <?php if($result): ?>
+      <div id="style-2" class="table-wrapper">
+        <table id="maintable">
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Company</th>
+            <th>Profession</th>
+            <th>View</th>
+          </tr>
+          <?php while(($row = $result->fetch_row()) != null){?>
+          <tr>
+            <td><?php echo $row[0] ?></td>
+            <td><?php echo $row[1] ?></td>
+            <td><?php echo $row[2] ?></td>
+            <td><?php echo $row[3] ?></td>
+            <td>View more...</td>
+          </tr>
+          <?php } ?>
+        </table>
+      </div>
+      <?php else: ?>
+      <h1>No data yet... Insert data</h1>
+      <?php endif; ?>
       </div>
       <h3 id="file-prompt">Only CSV files permitted</h3>
 
@@ -50,6 +87,12 @@ if(!isset($_SESSION)){
           unset($_SESSION['upload']);
         }
       ?>
+
+  <div class="logout-prompt">
+    <p>Are you sure you want to logout?</p>
+    <button id="logout-yes">Yes</button>
+    <button id="logout-no">No</button>  
+  </div>    
 
   <script src="/js/dashboard.js"></script>
   </body>

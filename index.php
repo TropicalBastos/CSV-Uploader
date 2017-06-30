@@ -4,6 +4,11 @@
     session_start();
     }
 
+    if(isset($_GET['logout'])){
+        session_destroy();
+        $_SESSION = [];
+    }
+
    if(!isset($_SESSION['user'])){
 
     require("/routes/loginpage.php");
@@ -15,7 +20,7 @@
 
    }else{
 
-    require("/account/dashboard.php");
+    header("Location: /account/dashboard.php");
 
    }
 

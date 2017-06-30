@@ -24,7 +24,7 @@ function checkUser($u, $p){
     }else{
         if($result->num_rows > 0){
             $row = $result->fetch_row();
-            $_SESSION['user'] = $row[0];
+            $_SESSION['user'] = $row[1];
             header("Location: /account/dashboard.php");
         }else{
             $_SESSION['loginfailed'] = "failed";
