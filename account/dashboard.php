@@ -111,10 +111,6 @@ $result = $conn->query($query);
     <button id="deleteall-no">No</button>  
   </div>
 
-  <!-- the hidden view for viewing more -->
-  <div class="view-modal">
-  </div>
-
   <div class="loader-wrapper">
     <img id="loader" src="/res/loader.gif" />
   </div>

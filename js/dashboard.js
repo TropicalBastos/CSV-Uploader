@@ -1,5 +1,28 @@
 (function(w){
 
+    w.columns = [
+        "First Name",
+        "Last Name",
+        "Company",
+        "Profession",
+        "Chapter Name",
+        "Phone Number",
+        "Alt Phone",
+        "Fax Number",
+        "Cell Number",
+        "Email",
+        "Website",
+        "Address",
+        "City",
+        "State",
+        "Zip",
+        "Substitute",
+        "Status",
+        "Join Date",
+        "Renewal",
+        "Sponsor"
+    ]
+
     w.correctFileType = false;
     var fileUpload = document.getElementById("file-upload");
     var importFile = document.getElementById("importfile");
@@ -97,7 +120,20 @@
         var url = "/account/fetchrow.php?id=" + id;
         xhr.onreadystatechange = function(){
             if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                var el;
+                if((el = document.getElementById("view-modal")) !== null) el.remove();
                 var json = JSON.parse(xhr.responseText);
+                var container = document.createElement("div");
+                container.id = "view-modal";
+                document.body.appendChild(container);
+                var count = 1;
+                for(var i in json){
+                    if(count >= json.length) break;
+                    var element = document.createElement("p");
+                    element.innerHTML = "<em>" + columns[i] + ": <em>" + json[count];
+                    container.appendChild(element);
+                    count++;
+                }
                 loader.style.display = "none";
             }else{
                 loader.style.display = "none";
