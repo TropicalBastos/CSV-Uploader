@@ -46,7 +46,7 @@ $result = $conn->query($query);
             <button type="button" id="deleteall" class="nav-button delete">Delete All</button>
           </form>
         </div>
-        <?php if($result): ?>
+        <?php if($result->num_rows > 1): ?>
       <div id="style-2" class="table-wrapper">
         <table id="maintable">
           <tr>
