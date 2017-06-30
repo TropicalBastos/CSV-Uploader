@@ -12,6 +12,9 @@
     var deleteAllPrompt = document.getElementById("deleteall-prompt");
     var deleteallYes = document.getElementById("deleteall-yes");
     var deleteallNo = document.getElementById("deleteall-no");
+    var viewMore = document.getElementsByClassName("view-more");
+    var loader = document.getElementsByClassName("loader-wrapper")[0];
+    var upload = document.getElementById("upload");
 
     fileUpload.addEventListener("change", fileListener);
     importFile.addEventListener("mouseenter", promptListener);
@@ -22,6 +25,10 @@
     deleteAll.addEventListener("click", deleteallPromptListener);
     deleteallYes.addEventListener("click", deleteAllRecords);
     deleteallNo.addEventListener("click", closePrompt);
+    Array.prototype.forEach.call(viewMore, function(item){
+        item.addEventListener("click", getViewMore);
+    });
+    upload.addEventListener("click", uploadListener);
 
     function fileListener(){
         var file = fileUpload.value;
@@ -45,6 +52,10 @@
             upload.style.cursor = "default";
             errorTag.style.display = "block";
         }
+    }
+
+    function uploadListener(){
+        loader.style.display = "block";
     }
 
     function promptListener(e){
@@ -76,6 +87,25 @@
 
     function deleteAllRecords(){
         window.location = "/account/delete.php?deleteall=d";
+    }
+
+    function getViewMore(e){
+        var cell = e.target;
+        var parent = cell.parentElement;
+        var id = parent.querySelector(".cellId").textContent;
+        var xhr = new XMLHttpRequest();
+        var url = "/account/fetchrow.php?id=" + id;
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                var json = JSON.parse(xhr.responseText);
+                loader.style.display = "none";
+            }else{
+                loader.style.display = "none";
+            }
+        }
+        xhr.open("GET", url);
+        loader.style.display = "block";
+        xhr.send();
     }
 
 })(window);

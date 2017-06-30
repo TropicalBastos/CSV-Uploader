@@ -53,16 +53,20 @@ $result = $conn->query($query);
             <th>First Name</th>
             <th>Last Name</th>
             <th>Company</th>
-            <th>Profession</th>
+            <th class="profession">Profession</th>
             <th>View</th>
           </tr>
           <?php while(($row = $result->fetch_row()) != null){?>
           <tr>
             <td><?php echo $row[1] ?></td>
             <td><?php echo $row[2] ?></td>
-            <td><?php echo $row[3] ?></td>
+            <td class="profession"><?php echo $row[3] ?></td>
             <td><?php echo $row[4] ?></td>
             <td class="view-more">View more...</td>
+            <td hidden class="cellId"><?php echo $row[0] ?></td>
+            <?php foreach($row as $value){?>
+            <td hidden class="row <?php echo $row[0] ?>"><?php echo $value ?></td>
+            <?php } ?>
           </tr>
           <?php } ?>
         </table>
@@ -105,7 +109,15 @@ $result = $conn->query($query);
     <p>Are you sure you want to delete all records?</p>
     <button id="deleteall-yes">Yes</button>
     <button id="deleteall-no">No</button>  
-  </div>  
+  </div>
+
+  <!-- the hidden view for viewing more -->
+  <div class="view-modal">
+  </div>
+
+  <div class="loader-wrapper">
+    <img id="loader" src="/res/loader.gif" />
+  </div>
 
   <script src="/js/dashboard.js"></script>
   </body>
