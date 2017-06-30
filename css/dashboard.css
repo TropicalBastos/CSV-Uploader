@@ -134,7 +134,7 @@ input[type="file"]{
     height: 500px;
 }
 
-.logout-prompt{
+.prompt{
     display: none;
     position: absolute;
     margin: 0 auto;
@@ -149,12 +149,18 @@ input[type="file"]{
     border: 2px dashed;
     animation: fadein .8s;
 }
-.logout-prompt button{
+.prompt button{
     width: 20%;
     height: 25px;
     font-size: 15px;
     font-weight: bold;
     cursor: pointer;
+}
+
+.view-more:hover{
+    background-color: black;
+    cursor: pointer;
+    color: white;
 }
 
 #style-2::-webkit-scrollbar-track
@@ -177,13 +183,13 @@ input[type="file"]{
 	background-color: black;
 }
 
-@media screen and (max-width: 800px){
+@media screen and (max-width: 1000px){
     .table-wrapper{
         font-size: 1em;
     }
 }
 
-@media screen and (max-width: 550px){
+@media screen and (max-width: 680px){
     .table-wrapper{
         font-size: 0.8em;
         font-weight: bold;

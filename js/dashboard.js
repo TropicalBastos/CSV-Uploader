@@ -7,13 +7,21 @@
     var logout = document.getElementById("logout-button");
     var logoutYes = document.getElementById("logout-yes");
     var logoutNo = document.getElementById("logout-no");
-    var logoutPrompt = document.getElementsByClassName("logout-prompt")[0];
+    var logoutPrompt = document.getElementById("logout-prompt");
+    var deleteAll = document.getElementById("deleteall");
+    var deleteAllPrompt = document.getElementById("deleteall-prompt");
+    var deleteallYes = document.getElementById("deleteall-yes");
+    var deleteallNo = document.getElementById("deleteall-no");
+
     fileUpload.addEventListener("change", fileListener);
     importFile.addEventListener("mouseenter", promptListener);
     importFile.addEventListener("mouseleave", promptListener);
     logout.addEventListener("click", logoutListener);
     logoutYes.addEventListener("click", logoutUser);
-    logoutNo.addEventListener("click", closeLogoutPrompt);
+    logoutNo.addEventListener("click", closePrompt);
+    deleteAll.addEventListener("click", deleteallPromptListener);
+    deleteallYes.addEventListener("click", deleteAllRecords);
+    deleteallNo.addEventListener("click", closePrompt);
 
     function fileListener(){
         var file = fileUpload.value;
@@ -51,12 +59,23 @@
         logoutPrompt.style.display = "block";
     }
 
-    function closeLogoutPrompt(){
-        logoutPrompt.style.display = "none";
+    function closePrompt(){
+        var prompts = document.getElementsByClassName("prompt");
+        Array.prototype.forEach.call(prompts, function(item){
+            item.style.display = "none";
+        });
     }
 
     function logoutUser(){
         window.location = "../index.php?logout=a";
+    }
+
+    function deleteallPromptListener(){
+        deleteAllPrompt.style.display = "block";
+    }
+
+    function deleteAllRecords(){
+        window.location = "/account/delete.php?deleteall=d";
     }
 
 })(window);

@@ -41,7 +41,7 @@ if(isset($_FILES['file']['name'])){
 
 function uploadCsvToDatabase($filePath){
 
-    $success = false;
+    $success = true;
     $affected_rows = 0;
     $conn = mysqli_connect(SERVER, ADMIN, ADMINPASS, DB);
 
@@ -49,6 +49,7 @@ function uploadCsvToDatabase($filePath){
 
         //no need for first line since the database already has the columns
         $columns = fgetcsv($handle, 1000, ",");
+        if(count($columns) != 20) return;
 
         while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
 
@@ -63,13 +64,16 @@ function uploadCsvToDatabase($filePath){
             $statement = "INSERT INTO " . $_SESSION['user'] .  " VALUES(";
             for ($c=0; $c < $num; $c++) {
                 $data[$c] = utf8_encode($data[$c]);
+                //escape apostrophes for query
+                $data[$c] = preg_replace('/\'/','\'\'',$data[$c]);
                 if($c == 0) $statement = $statement . "'$data[$c]'";
                 $statement = $statement . ",'$data[$c]'";
             }
             $statement = $statement . ");";
             if(!$conn->query($statement)){
-                $success = true;
-                $affected_rows = mysql_affected_rows($conn);
+                $success = false;
+            }else{
+                $affected_rows = $affected_rows + mysqli_affected_rows($conn);
             }
             
         }

@@ -26,4 +26,5 @@ define(
     joindate varchar(100),
     sponsor varchar(250)
 );");
+ini_set('max_execution_time', 300);
 ?>

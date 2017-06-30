@@ -42,8 +42,8 @@ $result = $conn->query($query);
             </label>
             <p class="error">*Wrong file type, only CSV allowed</p>
             <button type="submit" id="upload" class="nav-button" disabled>Upload</button>
-            <button class="nav-button delete">Delete Record</button>
-            <button class="nav-button delete">Delete All</button>
+            <button type="button" class="nav-button delete">Delete Record</button>
+            <button type="button" id="deleteall" class="nav-button delete">Delete All</button>
           </form>
         </div>
         <?php if($result): ?>
@@ -58,11 +58,11 @@ $result = $conn->query($query);
           </tr>
           <?php while(($row = $result->fetch_row()) != null){?>
           <tr>
-            <td><?php echo $row[0] ?></td>
             <td><?php echo $row[1] ?></td>
             <td><?php echo $row[2] ?></td>
             <td><?php echo $row[3] ?></td>
-            <td>View more...</td>
+            <td><?php echo $row[4] ?></td>
+            <td class="view-more">View more...</td>
           </tr>
           <?php } ?>
         </table>
@@ -72,6 +72,14 @@ $result = $conn->query($query);
       <?php endif; ?>
       </div>
       <h3 id="file-prompt">Only CSV files permitted</h3>
+
+      <?php
+        if(isset($_GET['delete'])){
+          if($_GET['delete'] == "all"){
+            echo "<h2 class='success' style='color:grey'>All records successfully deleted</h2>";
+          }
+        }
+      ?>
 
       <?php
         if(isset($_SESSION['upload'])){
@@ -88,11 +96,16 @@ $result = $conn->query($query);
         }
       ?>
 
-  <div class="logout-prompt">
+  <div class="prompt" id="logout-prompt">
     <p>Are you sure you want to logout?</p>
     <button id="logout-yes">Yes</button>
     <button id="logout-no">No</button>  
-  </div>    
+  </div>
+  <div class="prompt" id="deleteall-prompt">
+    <p>Are you sure you want to delete all records?</p>
+    <button id="deleteall-yes">Yes</button>
+    <button id="deleteall-no">No</button>  
+  </div>  
 
   <script src="/js/dashboard.js"></script>
   </body>
