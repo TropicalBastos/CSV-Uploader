@@ -56,16 +56,21 @@ input[type="file"]{
 }
 
 .nav-button{
-    width: 215px;
-    min-width: 150px;
-    font-size: 1.25em;
+    width: 137px;
+    font-size: 0.9em;
     background-color: white;
     cursor: pointer;
     border: 1px solid black;
     font-weight: bold;
-    height: 60px;
+    height: 55.9px;
     border-radius: 50px 50px 0px 0px;
     outline: none;
+
+}
+
+.add{
+    position: relative;
+    top: 16px;
 }
 
 .nav-button:hover{
@@ -79,6 +84,7 @@ input[type="file"]{
 }
 
 #importfile{
+    height: 55px;
     display: inline-block;
     text-align: center;
 }
@@ -127,11 +133,12 @@ input[type="file"]{
     color: grey;
     animation: fadein .5s;
     pointer-events: none;
+    font-size: 0.9em;
 }
 
 .table-wrapper{
     overflow-y: scroll;
-    font-size: 1.5em;
+    font-size: 1em;
     height: 500px;
 }
 
@@ -146,7 +153,7 @@ input[type="file"]{
     background-color: white;
     font-weight: bold;
     padding: 5px;
-    top: 500px;
+    top: 40vh;
     border: 2px dashed;
     animation: fadein .8s;
     z-index: 1000;
@@ -189,7 +196,7 @@ input[type="file"]{
     width:200px;
     height: auto;
     margin: 0 auto;
-    top: 300px;
+    top: 30vh;
     left: 0;
     right: 0;
 }
@@ -204,7 +211,7 @@ input[type="file"]{
     position: absolute;
     width: 300px;
     left: 40%;
-    top: 45vh;
+    top: 50vh;
     font-size: 1.5em;
     cursor: pointer;
     background-color: transparent;
@@ -217,6 +224,19 @@ input[type="file"]{
 #view-back:hover{
     color: white;
     background-color: black;
+}
+
+.mobile-nav{
+    display: none;
+    padding: 10px;
+}
+
+#nav-icon{
+    display: block;
+    width: 40px;
+    height: 40px;
+    background: url(/res/nav-icon.png);
+    background-size: cover;
 }
 
 #style-2::-webkit-scrollbar-track
@@ -243,21 +263,36 @@ input[type="file"]{
     .profession{
         display: none;
     }
+    .nav-wrapper{
+        display: none;
+    }
+    #desktop-nav{
+        display: none;
+    }
+    .mobile-nav{
+        display: block;
+    }
 }
 
 @media screen and (max-width: 800px){
     .table-wrapper{
-        font-size: 0.9em;
+        font-size: 0.8em;
         font-weight: bold;
     }
     .view-div{
-        font-size: 0.8em;
+        font-size: 0.7em;
     }
 }
 
 @media screen and (max-width: 600px){
     .view-div{
         font-size: 0.7em;
+    }
+}
+
+@media screen and (max-width: 480px){
+    .content{
+        width: 100%;
     }
 }
 
@@ -275,5 +310,6 @@ input[type="file"]{
     }
     #view-back{
         font-size: 1em;
+        width: 100%;
     }
 }

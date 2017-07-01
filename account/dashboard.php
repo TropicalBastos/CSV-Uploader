@@ -28,13 +28,16 @@ $result = $conn->query($query);
   <body>
 
       <nav class="navbar">
+        <div class="mobile-nav">
+          <span id="nav-icon"></span>
+        </div>
         <span id="logout-button"><i class="fa fa-sign-out"></i>   Logout</span>
       </nav>
       <h1 id="header">Welcome, <?php echo $_SESSION['user']?></h1>
 
       <div class="content">
         <div class="nav-wrapper">
-          <form action="/routes/upload.php" method="post" enctype="multipart/form-data">
+          <form id="desktop-nav" action="/routes/upload.php" method="post" enctype="multipart/form-data">
             <label id="filestring" for="importcsv"></label>
             <input id="file-upload" name="file" class="nav-button" type='file'/>
             <label for="file-upload" class="nav-button" id="importfile">
@@ -42,6 +45,7 @@ $result = $conn->query($query);
             </label>
             <p class="error">*Wrong file type, only CSV allowed</p>
             <button type="submit" id="upload" class="nav-button" disabled>Upload</button>
+            <button type="button" class="nav-button add">Add Record</button>
             <button type="button" class="nav-button delete">Delete Record</button>
             <button type="button" id="deleteall" class="nav-button delete">Delete All</button>
           </form>
