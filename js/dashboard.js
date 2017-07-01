@@ -137,20 +137,21 @@
                 var container = document.createElement("div");
                 container.id = "view-modal";
                 document.body.appendChild(container);
-                var count = 1;
+                var count = 0;
                 for(var i in json){
-                    if(count >= json.length) break;
+                    if(count >= json.length-1) break;
                     var element = document.createElement("span");
                     var strong = document.createElement("strong");
                     var div = document.createElement("div");
+                    if(count === json.length-2) div.id = "last-view";
                     div.classList.add("view-div");
                     strong.innerHTML = columns[count] + ":";
-                    element.innerHTML = " " + json[count];
+                    element.innerHTML = " " + json[count+1];
                     div.appendChild(strong);
                     div.appendChild(element);
                     div.appendChild(document.createElement("br"));
                     container.appendChild(div);
-                    if(count >= (json.length-1)){
+                    if(count >= (json.length-2)){
                         var backButton = document.createElement("button");
                         backButton.innerHTML = "Back";
                         backButton.id = "view-back";
