@@ -149,6 +149,7 @@ input[type="file"]{
     top: 500px;
     border: 2px dashed;
     animation: fadein .8s;
+    z-index: 1000;
 }
 .prompt button{
     width: 20%;
@@ -175,11 +176,12 @@ input[type="file"]{
 
 #view-modal{
     position: absolute;
-    background-color: white;
-    width: 100%;
+    top: 300px;
+    width: 80%;
     margin: 0 auto;
     right: 0;
     left: 0;
+    animation: fadein .8s;
 }
 
 #loader{
@@ -190,6 +192,28 @@ input[type="file"]{
     top: 300px;
     left: 0;
     right: 0;
+}
+
+.view-div{
+    font-size: 1.3em;
+    width: 50%;
+    float: left;
+}
+
+#view-back{
+    position: relative;
+    width: 20%;
+    left: 40%;
+    top: 20px;
+    font-size: 1.5em;
+    cursor: pointer;
+    background-color: transparent;
+    font-weight: bold;
+    border: 2px solid black;
+}
+#view-back:hover{
+    color: white;
+    background-color: black;
 }
 
 #style-2::-webkit-scrollbar-track
@@ -223,6 +247,15 @@ input[type="file"]{
         font-size: 0.9em;
         font-weight: bold;
     }
+    .view-div{
+        font-size: 1em;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .view-div{
+        font-size: 0.8em;
+    }
 }
 
 @media screen and (max-width: 450px){
@@ -233,5 +266,11 @@ input[type="file"]{
     .content{
         width: 100%;
         margin: 0;
+    }
+    .view-div{
+        font-size: 0.6em;
+    }
+    #view-back{
+        font-size: 1em;
     }
 }

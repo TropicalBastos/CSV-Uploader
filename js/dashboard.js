@@ -38,6 +38,8 @@
     var viewMore = document.getElementsByClassName("view-more");
     var loader = document.getElementsByClassName("loader-wrapper")[0];
     var upload = document.getElementById("upload");
+    var navWrapper = document.getElementsByClassName("nav-wrapper")[0];
+    var table = document.getElementsByClassName("table-wrapper")[0];
 
     fileUpload.addEventListener("change", fileListener);
     importFile.addEventListener("mouseenter", promptListener);
@@ -112,6 +114,13 @@
         window.location = "/account/delete.php?deleteall=d";
     }
 
+    function backFromView(){
+        table.style.display = "block";
+        navWrapper.style.display = "block";
+        var modal = document.getElementById("view-modal");
+        modal.style.display = "none";
+    }
+
     function getViewMore(e){
         var cell = e.target;
         var parent = cell.parentElement;
@@ -120,6 +129,8 @@
         var url = "/account/fetchrow.php?id=" + id;
         xhr.onreadystatechange = function(){
             if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                table.style.display = "none";
+                navWrapper.style.display = "none";
                 var el;
                 if((el = document.getElementById("view-modal")) !== null) el.remove();
                 var json = JSON.parse(xhr.responseText);
@@ -129,9 +140,23 @@
                 var count = 1;
                 for(var i in json){
                     if(count >= json.length) break;
-                    var element = document.createElement("p");
-                    element.innerHTML = "<em>" + columns[i] + ": <em>" + json[count];
-                    container.appendChild(element);
+                    var element = document.createElement("span");
+                    var strong = document.createElement("strong");
+                    var div = document.createElement("div");
+                    div.classList.add("view-div");
+                    strong.innerHTML = columns[count] + ":";
+                    element.innerHTML = " " + json[count];
+                    div.appendChild(strong);
+                    div.appendChild(element);
+                    div.appendChild(document.createElement("br"));
+                    container.appendChild(div);
+                    if(count >= (json.length-1)){
+                        var backButton = document.createElement("button");
+                        backButton.innerHTML = "Back";
+                        backButton.id = "view-back";
+                        backButton.addEventListener("click", backFromView);
+                        container.appendChild(backButton);
+                    }
                     count++;
                 }
                 loader.style.display = "none";
