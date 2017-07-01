@@ -43,7 +43,7 @@ input[type="file"]{
 
 .content{
     position: absolute;
-    top: 300px;
+    top: 30vh;
     width: 80%;
     margin: 0 auto;
     right: 0;
@@ -122,7 +122,7 @@ input[type="file"]{
 #file-prompt{
     display: none;
     position: absolute;
-    top: 260px;
+    top: 26vh;
     left: 10%;
     color: grey;
     animation: fadein .5s;
@@ -176,7 +176,7 @@ input[type="file"]{
 
 #view-modal{
     position: absolute;
-    top: 300px;
+    top: 30vh;
     width: 80%;
     margin: 0 auto;
     right: 0;
@@ -201,15 +201,18 @@ input[type="file"]{
 }
 
 #view-back{
-    position: relative;
-    width: 20%;
+    position: absolute;
+    width: 300px;
     left: 40%;
-    top: 20px;
+    top: 45vh;
     font-size: 1.5em;
     cursor: pointer;
     background-color: transparent;
     font-weight: bold;
     border: 2px solid black;
+    margin: 0 auto;
+    right: 0;
+    left: 0;
 }
 #view-back:hover{
     color: white;
@@ -248,13 +251,13 @@ input[type="file"]{
         font-weight: bold;
     }
     .view-div{
-        font-size: 1em;
+        font-size: 0.8em;
     }
 }
 
 @media screen and (max-width: 600px){
     .view-div{
-        font-size: 0.8em;
+        font-size: 0.7em;
     }
 }
 
