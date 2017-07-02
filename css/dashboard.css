@@ -41,7 +41,9 @@ input[type="file"]{
     color: grey;
 }
 
-#header{
+.header{
+    position: relative;
+    top: 8vh;
     animation: fadein .5s;
 }
 

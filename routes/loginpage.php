@@ -14,7 +14,7 @@ if(!isset($_SESSION)){
   </head>
   <body>
   
-  <h1 id="header">CSV Login</h1>
+  <span id="header"></span>
 
   <div class="login-wrapper">
     <form action="routes/login.php" method="post">

@@ -29,8 +29,16 @@ button{
 }
 
 #header{
-    position: relative;
-    top: 15vh;
+    display: block;
+    position: absolute;
+    background: url(/res/logo.png) no-repeat;
+    background-size: contain;
+    width: 320px;
+    height: 150px;
+    top: 8vh;
+    margin: 0 auto;
+    right: 0;
+    left: 0;
     animation: fadein 1s;
 }
 
@@ -95,4 +103,10 @@ button{
         opacity: 1;
     }
 
+}
+
+@media screen and (max-width: 500px){
+    #header{
+        top: 0vh;
+    }
 }

@@ -38,7 +38,7 @@ $result = $conn->query($query);
         <h2 class="error delete-error">No records selected</h2>
       </div>
 
-      <h1 id="header">Welcome, <?php echo $_SESSION['user']?></h1>
+      <h1 class="dashboard header">Welcome, <?php echo $_SESSION['user']?></h1>
 
       <div class="full-nav">
         <span class="close"></span>
