@@ -31,6 +31,7 @@ $result = $conn->query($query);
         <div class="mobile-nav">
           <span id="nav-icon"></span>
         </div>
+        <span class="logo"></span>
         <span id="help-button">Help</span>
         <span id="logout-button"><i class="fa fa-sign-out"></i>   Logout</span>
       </nav>

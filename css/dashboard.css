@@ -43,7 +43,7 @@ input[type="file"]{
 
 .header{
     position: relative;
-    top: 8vh;
+    top: 15vh;
     animation: fadein .5s;
 }
 
@@ -155,6 +155,7 @@ input[type="file"]{
     display: block;
     color: lightgreen;
     animation: fadein .8s;
+    top: -80px;
 }
 
 #file-prompt{
@@ -412,6 +413,19 @@ input[type="file"]{
     text-align: center;
 }
 
+.logo{
+    display: block;
+    position: absolute;
+    background: url(/res/logo.png) no-repeat;
+    background-size: contain;
+    width: 130px;
+    height: 80px;
+    left: 20px;
+    top: -3px !important;
+    cursor: default !important;
+}
+
+
 #style-2::-webkit-scrollbar-track
 {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
@@ -466,6 +480,9 @@ input[type="file"]{
 @media screen and (max-width: 600px){
     .view-div{
         font-size: 0.7em;
+    }
+    .success{
+        top: -35px;
     }
 }
 

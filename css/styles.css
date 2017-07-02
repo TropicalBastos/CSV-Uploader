@@ -35,7 +35,7 @@ button{
     background-size: contain;
     width: 320px;
     height: 150px;
-    top: 8vh;
+    top: 6vh;
     margin: 0 auto;
     right: 0;
     left: 0;
@@ -103,6 +103,12 @@ button{
         opacity: 1;
     }
 
+}
+
+@media screen and (max-width: 1300px){
+    #header{
+        top: 0vh;
+    }
 }
 
 @media screen and (max-width: 500px){
