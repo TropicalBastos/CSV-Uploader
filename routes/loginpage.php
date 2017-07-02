@@ -11,13 +11,14 @@ if(!isset($_SESSION)){
   <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Member Login</title>
     <link rel="stylesheet" type="text/css" href="/css/styles.css"/>
+    <link rel="icon" type="image/png" href="/res/logo.png"/>
   </head>
   <body>
   
   <span id="header"></span>
 
   <div class="login-wrapper">
-    <form action="routes/login.php" method="post">
+    <form action="/routes/login.php" method="post">
         <label for="username">Username:</label>
         <input name="user" id="username" type="text" />
         <label for="password">Password:</label>
@@ -30,6 +31,8 @@ if(!isset($_SESSION)){
       }
      ?>
   </div>
-
+  <div class="register-link" >
+    <a href="/routes/registerpage.php">Dont have an account? Register here!</a>
+  </div>
   </body>
 </html>

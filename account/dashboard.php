@@ -24,6 +24,7 @@ $result = $conn->query($query);
     <link rel="stylesheet" type="text/css" href="/css/styles.css"/>
     <link rel="stylesheet" type="text/css" href="/css/dashboard.css"/>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="icon" type="image/png" href="/res/logo.png"/>
   </head>
   <body>
 

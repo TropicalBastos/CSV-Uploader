@@ -91,6 +91,24 @@ button{
     text-align: center;
 }
 
+.register-link{
+    position: absolute;
+    width: 320px;
+    text-align: center;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    top: 90vh;
+    border-right: 2px solid black;
+    border-left: 2px solid black;
+}
+.register-link>a{
+    text-decoration: none;
+    color: #0093ff;
+    font-size: 18px;
+    font-weight: 600;
+}
+
 /** Animation for fading in on load **/
 @keyframes fadein{
 

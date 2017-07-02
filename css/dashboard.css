@@ -131,6 +131,8 @@ input[type="file"]{
     font-weight: 600;
     border: 14px solid black;
     display: none;
+    overflow-y: scroll;
+    height: 500px;
 }
 
 .error{
@@ -156,6 +158,7 @@ input[type="file"]{
     color: lightgreen;
     animation: fadein .8s;
     top: -80px;
+    pointer-events: none;
 }
 
 #file-prompt{
