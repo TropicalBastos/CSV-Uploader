@@ -33,6 +33,10 @@ $result = $conn->query($query);
         </div>
         <span id="logout-button"><i class="fa fa-sign-out"></i>   Logout</span>
       </nav>
+      <div class="delete-error-wrapper">
+        <h2 class="error delete-error">No records selected</h2>
+      </div>
+
       <h1 id="header">Welcome, <?php echo $_SESSION['user']?></h1>
 
       <div class="full-nav">
@@ -109,9 +113,16 @@ $result = $conn->query($query);
       ?>
       
       <?php
-        if(isset($_GET['added'])){
+        if(isset($_SESSION['added'])){
             echo "<h2 class='success'>Record successfully added</h2>";
             unset($_SESSION['added']);
+        }
+      ?>
+
+      <?php
+        if(isset($_SESSION['deleted'])){
+            echo "<h2 class='success'>Record successfully deleted</h2>";
+            unset($_SESSION['deleted']);
         }
       ?>
 
@@ -134,6 +145,11 @@ $result = $conn->query($query);
     <p>Are you sure you want to logout?</p>
     <button id="logout-yes">Yes</button>
     <button id="logout-no">No</button>  
+  </div>
+  <div class="prompt" id="delete-prompt">
+    <p>Are you sure you want to delete the selected record(s)?</p>
+    <button id="delete-yes">Yes</button>
+    <button id="delete-no">No</button>  
   </div>
   <div class="prompt" id="deleteall-prompt">
     <p>Are you sure you want to delete all records?</p>

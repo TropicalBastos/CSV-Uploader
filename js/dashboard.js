@@ -62,6 +62,11 @@
     var content = document.getElementsByClassName("content")[0];
     var addForm = document.getElementById("add-form");
     var formSubmit = document.getElementById("form-submit");
+    var deleteRecord = document.querySelector(".nav-button.delete");
+    var deleteSelected = document.getElementById("delete-prompt");
+    var deleteNo = document.getElementById("delete-no");
+    var deleteYes = document.getElementById("delete-yes");
+    var deleteError = document.querySelector(".delete-error");
 
     //EVENT LISTENERS
     fileUpload.addEventListener("change", fileListener);
@@ -95,6 +100,9 @@
     addRecord.addEventListener("click", addRecordPrompt);
     mobileAdd.addEventListener("click", function(){closeNav(); addRecordPrompt();});
     formSubmit.addEventListener("click", submitAdd);
+    deleteRecord.addEventListener("click", deletePromptListener);
+    deleteNo.addEventListener("click", closePrompt);
+    deleteYes.addEventListener("click", deleteRecordListener);
 
     function fileListener(){
         var file = fileUpload.value;
@@ -158,6 +166,52 @@
 
     function logoutUser(){
         window.location = "../index.php?logout=a";
+    }
+
+    function deletePromptListener(){
+        deleteSelected.style.display = "block";
+    }
+
+    function deleteRecordListener(){
+        var selected = [];
+        var checkboxes = document.querySelectorAll("input[type='checkbox']");
+        Array.prototype.forEach.call(checkboxes, function(box){
+            if(box.checked){
+                selected.push(box.parentElement.parentElement);
+            }
+        });
+        if(selected.length >= 1){
+            deleteError.style.display = "none";
+            closePrompt();
+            var xhr = new XMLHttpRequest();
+            var url = "/account/delete.php";
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState == 4 && xhr.status == 200) {
+                    loader.style.display = "none";
+                    window.location = "/account/dashboard.php";
+                }
+            }
+            selectedId = [];
+            Array.prototype.forEach.call(selected, function(row){
+                selectedId.push(row.querySelector(".cellId").innerHTML);
+            });
+            var dataString = "";
+            for(var i = 0; i < selectedId.length; i++){
+                if(i === 0){
+                    dataString = "delete" + i + "=" + selectedId[i];
+                }else{
+                    dataString += "&delete" + i + "=" + selectedId[i];
+                }
+            }
+            xhr.open("POST", url, true);
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhr.send(dataString);
+            loader.style.display = "block";
+        }else{
+            closePrompt();
+            deleteError.innerHTML = "No records selected";
+            deleteError.style.display = "block";
+        }
     }
 
     function deleteallPromptListener(){
