@@ -67,6 +67,11 @@
     var deleteNo = document.getElementById("delete-no");
     var deleteYes = document.getElementById("delete-yes");
     var deleteError = document.querySelector(".delete-error");
+    var deleteMobile = document.getElementById("mobile-delete");
+    var closeHelpButton = document.querySelector(".close-help");
+    var helpButton = document.getElementById("help-button");
+    var helpPrompt = document.querySelector(".help-prompt");
+    var helpMobile = document.getElementById("mobile-help");
 
     //EVENT LISTENERS
     fileUpload.addEventListener("change", fileListener);
@@ -103,6 +108,10 @@
     deleteRecord.addEventListener("click", deletePromptListener);
     deleteNo.addEventListener("click", closePrompt);
     deleteYes.addEventListener("click", deleteRecordListener);
+    deleteMobile.addEventListener("click", function(){closeNav(); deleteRecordListener();});
+    helpButton.addEventListener("click", openHelp);
+    closeHelpButton.addEventListener("click", closeHelp);
+    helpMobile.addEventListener("click", function(){closeNav(); openHelp();});
 
     function fileListener(){
         var file = fileUpload.value;
@@ -334,6 +343,14 @@
         if(validateAdd()){
             addForm.submit();
         }
+    }
+
+    function openHelp(){
+        helpPrompt.style.display = "block";
+    }
+
+    function closeHelp(){
+        helpPrompt.style.display = "none";
     }
 
 })(window);

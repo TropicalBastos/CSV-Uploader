@@ -109,6 +109,28 @@ input[type="file"]{
     top: 50px;
 }
 
+#help-button{
+    position: absolute;
+    right: 200px;
+}
+
+.help-prompt{
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    background-color: white;
+    z-index: 9998;
+    position: absolute;
+    text-align: left;
+    width: 80%;
+    font-size: 15px;
+    padding: 20px;
+    animation: fadein .5s;
+    font-weight: 600;
+    border: 14px solid black;
+    display: none;
+}
+
 .error{
     display: none;
     color: tomato;
@@ -164,7 +186,7 @@ input[type="file"]{
     top: 40vh;
     border: 2px dashed;
     animation: fadein .8s;
-    z-index: 1000;
+    z-index: 9999;
 }
 .prompt button{
     width: 20%;
@@ -300,6 +322,18 @@ input[type="file"]{
     cursor: pointer;
 }
 
+.close-help{
+    position: absolute;
+    display: block;
+    background: url(/res/close-help.png);
+    background-size: cover;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    top: 0;
+    right: 0;
+}
+
 .nav-item{
     margin: 20px;
     cursor: pointer;
@@ -412,6 +446,9 @@ input[type="file"]{
     #logout-button{
         display: none;
     }
+    #help-button{
+        display: none;
+    }
 }
 
 @media screen and (max-width: 800px){
@@ -451,5 +488,8 @@ input[type="file"]{
     #view-back{
         font-size: 1em;
         width: 100%;
+    }
+    .help-prompt{
+        font-size: 12px;
     }
 }

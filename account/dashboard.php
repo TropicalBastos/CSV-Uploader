@@ -31,6 +31,7 @@ $result = $conn->query($query);
         <div class="mobile-nav">
           <span id="nav-icon"></span>
         </div>
+        <span id="help-button">Help</span>
         <span id="logout-button"><i class="fa fa-sign-out"></i>   Logout</span>
       </nav>
       <div class="delete-error-wrapper">
@@ -224,6 +225,41 @@ $result = $conn->query($query);
 
   <div class="loader-wrapper">
     <img id="loader" src="/res/loader.gif" />
+  </div>
+
+  <div class="help-prompt">
+    <h2>Help</h2>
+    <span class="close-help"></span>
+    <p>Peoplify is a mini database web app capable of taking in csv files and storing data about people
+      remotely</p>
+    <p>To store data via file import, you have to select a csv file with the following columns 
+      (of course many unrelevant fields can be left blank). Data will be appended to your account's dashboard table</p>
+    <ul>
+      <li>First Name</li>
+      <li>Last Name</li>
+      <li>Company</li>
+      <li>Profession</li>
+      <li>Chapter Name</li>
+      <li>Phone Number</li>
+      <li>Alternate Phone</li>
+      <li>Fax Number</li>
+      <li>Mobile Phone</li>
+      <li>Email</li>
+      <li>Website</li>
+      <li>Address</li>
+      <li>City</li>
+      <li>State</li>
+      <li>Zip</li>
+      <li>Substitute</li>
+      <li>Status</li>
+      <li>Join Date</li>
+      <li>Renewal</li>
+      <li>Sponsor</li>
+    </ul>
+    <p>Records can be added manually through the add record in which you can fill out a form corresponding to the values
+      that will be stored</p>
+    <p>Records can be deleted via selecting the appropiate record's checkbox or if you truly wish you can delete 
+      every record stored through the delete all option</p>
   </div>
 
   <script src="/js/dashboard.js"></script>
