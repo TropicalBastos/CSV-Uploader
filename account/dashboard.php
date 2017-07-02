@@ -67,18 +67,16 @@ $result = $conn->query($query);
       <div id="style-2" class="table-wrapper">
         <table id="maintable">
           <tr>
+            <th>Select</th>
             <th>First Name</th>
             <th>Last Name</th>
-            <th>Company</th>
-            <th class="profession">Profession</th>
             <th>View</th>
           </tr>
           <?php while(($row = $result->fetch_row()) != null){?>
           <tr>
+            <td><input type="checkbox"/></td>
             <td><?php echo $row[1] ?></td>
             <td><?php echo $row[2] ?></td>
-            <td class="profession"><?php echo $row[3] ?></td>
-            <td><?php echo $row[4] ?></td>
             <td class="view-more">View more...</td>
             <td hidden class="cellId"><?php echo $row[0] ?></td>
             <?php foreach($row as $value){?>

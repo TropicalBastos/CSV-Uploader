@@ -6,6 +6,10 @@ body{
     margin: 0;
 }
 
+td{
+    width: 30%;
+}
+
 input[type="file"]{
     width: 0.1px;
 	height: 0.1px;
@@ -142,7 +146,7 @@ input[type="file"]{
 
 .table-wrapper{
     overflow-y: scroll;
-    font-size: 1em;
+    font-size: 2em;
     height: 500px;
 }
 
@@ -402,7 +406,7 @@ input[type="file"]{
 
 @media screen and (max-width: 800px){
     .table-wrapper{
-        font-size: 0.8em;
+        font-size: 1.2em;
         font-weight: bold;
     }
     .view-div{
