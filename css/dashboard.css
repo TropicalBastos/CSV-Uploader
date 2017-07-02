@@ -111,6 +111,10 @@ input[type="file"]{
     animation: fadein .8s;
 }
 
+.add-error{
+    font-size: 14px;
+}
+
 .file-error{
     position: relative;
     text-align: center;
@@ -309,6 +313,53 @@ input[type="file"]{
 .nav-item.disabled:hover{
     background-color: transparent;
     transition: none;
+}
+
+.add-modal-wrapper{
+    width: 300px;
+    display: inline-block;
+    position: absolute;
+    top: 20vh;
+    font-size: 14px;
+    border: 2px dashed black;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    background-color: white;
+    overflow: hidden;
+    z-index: 9999;
+    display: none;
+    animation: fadein .5s;
+}
+
+.add-modal{
+    margin-right: 0;
+    width: 1200px;
+    transition: all .3s ease-out;
+}
+
+.add-modal input{
+    width: 100%;
+    border: 1px solid black;
+    margin: 10px 0 10px 0;
+}
+
+.add-modal button{
+    cursor: pointer;
+    width: 28%;
+    font-weight: bold;
+    height: 30px;
+    margin-top: 15px;
+    background-color: white;
+    border: 1px solid black;
+}
+
+.page{
+    float: left;
+    width: 250px;
+    margin-right: 20px;
+    margin-left: 20px;
 }
 
 #style-2::-webkit-scrollbar-track

@@ -51,6 +51,17 @@
     var mobileDeleteAll = document.getElementById("mobile-all");
     var navUpload = document.getElementById("nav-upload");
     var form = document.getElementById("desktop-nav");
+    var pages = document.getElementsByClassName("page");
+    var addModal = document.getElementsByClassName("add-modal")[0];
+    var next = document.getElementsByClassName("next");
+    var addBack = document.querySelectorAll(".page .back");
+    var addModalContainer = document.getElementsByClassName("add-modal-wrapper")[0];
+    var cancelButton = document.getElementsByClassName("cancel");
+    var addRecord = document.querySelector(".nav-button.add");
+    var mobileAdd = document.getElementById("mobile-add");
+    var content = document.getElementsByClassName("content")[0];
+    var addForm = document.getElementById("add-form");
+    var formSubmit = document.getElementById("form-submit");
 
     //EVENT LISTENERS
     fileUpload.addEventListener("change", fileListener);
@@ -72,6 +83,18 @@
     mobileLogout.addEventListener("click", function(){closeNav();logoutListener();});
     mobileDeleteAll.addEventListener("click", function(){closeNav();deleteallPromptListener();});
     mobileUpload.addEventListener("click", function(){closeNav(); uploadListener(); form.submit();});
+    Array.prototype.forEach.call(next, function(n){
+        n.addEventListener("click", nextPage);
+    });
+    Array.prototype.forEach.call(addBack, function(b){
+        b.addEventListener("click", prevPage);
+    });
+    Array.prototype.forEach.call(cancelButton, function(c){
+        c.addEventListener("click", cancelAdd);
+    });
+    addRecord.addEventListener("click", addRecordPrompt);
+    mobileAdd.addEventListener("click", function(){closeNav(); addRecordPrompt();});
+    formSubmit.addEventListener("click", submitAdd);
 
     function fileListener(){
         var file = fileUpload.value;
@@ -207,6 +230,56 @@
 
     function closeNav(){
         fullNav.style.display = "none";
+    }
+
+    function hasClass(element, cls) {
+        return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
+    }
+
+    //Add record page function
+    function nextPage(){
+        var computed = getComputedStyle(addModal);
+        var current = computed["margin-left"];
+        current = parseInt(current.replace("px",""));
+        addModal.style["margin-left"] = (current - 290) + "px";
+    }
+
+    function prevPage(){
+        var computed = getComputedStyle(addModal);
+        var current = computed["margin-left"];
+        current = parseInt(current.replace("px",""));
+        addModal.style["margin-left"] = (current + 290) + "px";
+    }
+
+    function cancelAdd(){
+        addModalContainer.style.display = "none";
+    }
+
+    function addRecordPrompt(){
+        addModalContainer.style.display = "block";
+    }
+
+    function validateAdd(){
+        var firstname = document.getElementById("add-first").value;
+        var lastname = document.getElementById("add-last").value;
+        var email = document.getElementById("add-email").value;
+
+        if(firstname.length === 0
+        || lastname.length === 0
+        || email.length === 0){
+            var err = document.querySelector(".add-error");
+            err.style.display = "block";
+            return false;
+        }
+        cancelAdd();
+        uploadListener();
+        return true;
+    }
+
+    function submitAdd(){
+        if(validateAdd()){
+            addForm.submit();
+        }
     }
 
 })(window);

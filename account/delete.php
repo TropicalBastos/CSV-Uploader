@@ -15,7 +15,8 @@ if(isset($_GET['deleteall'])){
     $query = "TRUNCATE " . $_SESSION['user'] . ";";
     $conn = mysqli_connect(SERVER, ADMIN, ADMINPASS, DB);
     $conn->query($query);
-    header("Location: /account/dashboard.php?delete=all");
+    $_SESSION['delete'] = "all";
+    header("Location: /account/dashboard.php");
 
 }else{
 

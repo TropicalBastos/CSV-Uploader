@@ -63,7 +63,7 @@ $result = $conn->query($query);
             <button type="button" id="deleteall" class="nav-button delete">Delete All</button>
           </form>
         </div>
-        <?php if($result->num_rows > 1): ?>
+        <?php if($result->num_rows >= 1): ?>
       <div id="style-2" class="table-wrapper">
         <table id="maintable">
           <tr>
@@ -95,10 +95,25 @@ $result = $conn->query($query);
       <h3 id="file-prompt">Only CSV files permitted</h3>
 
       <?php
-        if(isset($_GET['delete'])){
-          if($_GET['delete'] == "all"){
+        if(isset($_SESSION['delete'])){
+          if($_SESSION['delete'] == "all"){
             echo "<h2 class='success' style='color:grey'>All records successfully deleted</h2>";
+            unset($_SESSION['delete']);
           }
+        }
+      ?>
+
+      <?php
+        if(isset($_SESSION['add_error'])){
+          echo "<h2 class='error file-error' >Error while adding record</h2>";
+          unset($_SESSION['add_error']);
+        }
+      ?>
+      
+      <?php
+        if(isset($_GET['added'])){
+            echo "<h2 class='success'>Record successfully added</h2>";
+            unset($_SESSION['added']);
         }
       ?>
 
@@ -126,6 +141,71 @@ $result = $conn->query($query);
     <p>Are you sure you want to delete all records?</p>
     <button id="deleteall-yes">Yes</button>
     <button id="deleteall-no">No</button>  
+  </div>
+
+  <div class="add-modal-wrapper">
+  <div class="add-modal">
+    <form method="post" id="add-form" action="/account/add.php" id="add-form">
+    <div class="page 1 active">
+      <label for="add-first">*First Name:</label>
+      <input type="text" name="first" id="add-first"/>
+      <label for="add-last">*Last Name:</label>
+      <input type="text" name="last" id="add-last"/>
+      <label for="add-company">Company Name:</label>
+      <input type="text" name="company" id="add-company"/>
+      <label for="add-profession">Profession:</label>
+      <input type="text" name="profession" id="add-profession"/>
+      <label for="add-chapter">Chapter Name:</label>
+      <input type="text" name="chapter" id="add-chapter"/>
+      <button class="next" type="button">Next</button>
+      <button class="cancel" type="button">Cancel</button>
+    </div>
+    <div class="page 2">
+      <label for="add-phone">Phone Number:</label>
+      <input type="text" name="phone" id="add-phone"/>
+      <label for="add-altphone">Alternate Phone:</label>
+      <input type="text" name="altphone" id="add-altphone"/>
+      <label for="add-cell">Mobile:</label>
+      <input type="text" name="cell" id="add-cell"/>
+      <label for="add-fax">Fax:</label>
+      <input name="fax" id="add-fax" type="text"/>
+      <label for="add-email">*Email:</label>
+      <input type="text" name="email" id="add-email"/>
+      <button type="button" class="back">Back</button>
+      <button class="next" type="button">Next</button>
+      <button class="cancel" type="button">Cancel</button>
+    </div>
+    <div class="page 3">
+      <label for="add-website">Website:</label>
+      <input type="text" name="website" id="add-website"/>
+      <label for="add-address">Address:</label>
+      <input type="text" name="address" id="add-address"/>
+      <label for="add-city">City:</label>
+      <input name="city" id="add-city" type="text"/>
+      <label for="add-state">State:</label>
+      <input name="state" id="add-state" type="text"/>
+      <label for="add-zip">Zip:</label>
+      <input name="zip" id="add-zip" type="text"/>
+      <button class="back" type="button">Back</button>
+      <button class="next" type="button">Next</button>
+      <button class="cancel" type="button">Cancel</button>
+    </div>
+    <div class="page 4">
+      <label for="add-sub">Substitute:</label>
+      <input name="substitute" id="add-sub" type="text"/>
+      <label for="add-status">Status:</label>
+      <input name="status" id="add-status" type="text"/>
+      <label for="add-join">Join Date (MM/DD/YYYY):</label>
+      <input name="join" id="add-join" type="text"/>
+      <label for="add-sponsor">Sponsor:</label>
+      <input name="sponsor" id="add-sponsor" type="text"/>
+      <button type="button" class="back">Back</button>
+      <button id="form-submit" type="button">Submit</button>
+      <button type="button" class="cancel">Cancel</button>
+      <p class="error add-error">First/Last Name's and Email fields required</p>
+    </div>
+    </form>
+    </div>
   </div>
 
   <div class="loader-wrapper">
