@@ -24,6 +24,8 @@
     ]
 
     w.correctFileType = false;
+
+    //ELEMENTS
     var fileUpload = document.getElementById("file-upload");
     var importFile = document.getElementById("importfile");
     var prompt = document.getElementById("file-prompt");
@@ -40,7 +42,17 @@
     var upload = document.getElementById("upload");
     var navWrapper = document.getElementsByClassName("nav-wrapper")[0];
     var table = document.getElementsByClassName("table-wrapper")[0];
+    var navIcon = document.getElementById("nav-icon");
+    var fullNav = document.getElementsByClassName("full-nav")[0];
+    var close = document.getElementsByClassName("close")[0];
+    var mobileLogout = document.getElementById("mobile-logout");
+    var chooseUpload = document.getElementById("choose-upload");
+    var mobileUpload = document.getElementById("mobile-upload");
+    var mobileDeleteAll = document.getElementById("mobile-all");
+    var navUpload = document.getElementById("nav-upload");
+    var form = document.getElementById("desktop-nav");
 
+    //EVENT LISTENERS
     fileUpload.addEventListener("change", fileListener);
     importFile.addEventListener("mouseenter", promptListener);
     importFile.addEventListener("mouseleave", promptListener);
@@ -54,14 +66,26 @@
         item.addEventListener("click", getViewMore);
     });
     upload.addEventListener("click", uploadListener);
+    navIcon.addEventListener("touch", openNav);
+    navIcon.addEventListener("click", openNav);
+    close.addEventListener("click", closeNav);
+    mobileLogout.addEventListener("click", function(){closeNav();logoutListener();});
+    mobileDeleteAll.addEventListener("click", function(){closeNav();deleteallPromptListener();});
+    mobileUpload.addEventListener("click", function(){closeNav(); uploadListener(); form.submit();});
 
     function fileListener(){
         var file = fileUpload.value;
+        var fileMobile = fileUpload.value;
         var regex = /^(C:\\).*(\\)+([a-zA-Z.\-0-9]+)$/;
         file = file.replace(regex,"$3");
+        fileMobile = fileMobile.replace(regex,"$3");
         var span = document.querySelector("#importfile>span");
-        if(file==="") file = "Import CSV";
+        if(file===""){
+            file = "Import CSV";
+            fileMobile = "lalala";
+        }
         span.innerHTML = file;
+        navUpload.innerHTML = fileMobile;
         
         //check if it is csv
         var csvRegex = /^.*\.csv$/;
@@ -72,11 +96,18 @@
             correctFileType = true;
             upload.disabled = false;
             upload.style.cursor = "pointer";
+
+            //mobile activate upload
+            mobileUpload.classList.remove("disabled");
         }else{
             upload.disabled = true;
             upload.style.cursor = "default";
             errorTag.style.display = "block";
+
+            //mobile deactivate upload
+            mobileUpload.classList.add("disabled");
         }
+
     }
 
     function uploadListener(){
@@ -168,6 +199,14 @@
         xhr.open("GET", url);
         loader.style.display = "block";
         xhr.send();
+    }
+
+    function openNav(){
+        fullNav.style.display = "block";
+    }
+
+    function closeNav(){
+        fullNav.style.display = "none";
     }
 
 })(window);

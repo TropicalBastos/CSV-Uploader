@@ -35,6 +35,19 @@ $result = $conn->query($query);
       </nav>
       <h1 id="header">Welcome, <?php echo $_SESSION['user']?></h1>
 
+      <div class="full-nav">
+        <span class="close"></span>
+        <ul>
+          <li id="choose-upload" class="nav-item"><label id="nav-upload" for="file-upload">Choose File...</label>
+          <li id="mobile-upload" class="nav-item disabled"><span>Upload</span>
+          <li id="mobile-add" class="nav-item"><span>Add Record</span>
+          <li id="mobile-delete" class="nav-item"><span>Delete Record</span>
+          <li id="mobile-all" class="nav-item"><span>Delete All</span>
+          <li id="mobile-help" class="nav-item"><span>Help</span>
+          <li id="mobile-logout" class="nav-item"><span>Logout</span>
+        </ul>
+      </div>
+
       <div class="content">
         <div class="nav-wrapper">
           <form id="desktop-nav" action="/routes/upload.php" method="post" enctype="multipart/form-data">
