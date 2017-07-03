@@ -3,6 +3,7 @@ define("SERVER","ian.1pcswebdesign.co.uk");
 define("DB","ian1pcsw_Test");
 define("ADMIN","ian1pcsw_Ian");
 define("ADMINPASS","ian123");
+define("ROOT", $_SERVER['DOCUMENT_ROOT']);
 define(
     "DATA_TABLE",
     "(
