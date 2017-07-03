@@ -8,4 +8,4 @@ CSV uploader for people records as a task for 1PCS web development company
 <li>Fully mobile responsive on the latest devices</li>
 </ul>
 <br>
-![alt text](screens/composition.png?raw=true)
+![alt text](screens/composition.png?raw=true "Screenshot")
