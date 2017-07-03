@@ -489,17 +489,6 @@ input[type="file"]{
     }
 }
 
-@media screen and (max-device-width: 600px)
-              and (orientation: landscape){
-        .full-nav>ul{
-            font-size: 20px;
-            top: 5vh;
-        }
-        .nav-item{
-            margin: 10px;
-        }
-    }
-
 @media screen and (max-width: 480px){
     .content{
         width: 100%;
@@ -529,3 +518,30 @@ input[type="file"]{
         font-size: 12px;
     }
 }
+
+@media screen and (max-device-width: 600px)
+              and (orientation: portrait){
+                  #view-back{
+                      top: 50vh;
+                  }
+              }
+
+@media screen and (max-device-width: 600px)
+              and (orientation: landscape){
+        .full-nav>ul{
+            font-size: 20px;
+            top: 5vh;
+        }
+        .nav-item{
+            margin: 10px;
+        }
+        .header{
+            top: 10vh;
+        }
+        #view-back{
+            top: 58vh;
+        }
+        .delete-error-wrapper{
+            top: 0vh;
+        }
+    }
