@@ -7,4 +7,4 @@ CSV uploader for people records as a task for 1PCS web development company
 <li>Full login and registration functionality with each user having their own private dashboard for customisation</li>
 <li>Fully mobile responsive on the latest devices</li>
 <br>
-![](screens/composition.png?raw=true)
+![](/screens/composition.png?raw=true)
