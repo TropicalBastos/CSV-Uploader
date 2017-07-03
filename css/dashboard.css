@@ -247,7 +247,7 @@ input[type="file"]{
     position: absolute;
     width: 300px;
     left: 40%;
-    top: 50vh;
+    top: 61vh;
     font-size: 1.5em;
     cursor: pointer;
     background-color: transparent;
@@ -489,9 +489,23 @@ input[type="file"]{
     }
 }
 
+@media screen and (max-device-width: 600px)
+              and (orientation: landscape){
+        .full-nav>ul{
+            font-size: 20px;
+            top: 5vh;
+        }
+        .nav-item{
+            margin: 10px;
+        }
+    }
+
 @media screen and (max-width: 480px){
     .content{
         width: 100%;
+    }
+    .full-nav>ul{
+        font-size: 24px;
     }
 }
 
