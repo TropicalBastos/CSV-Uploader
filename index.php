@@ -20,7 +20,7 @@
 
    }else{
 
-    header("Location: /account/dashboard.php");
+    header("Location: /account/dashboard");
 
    }
 

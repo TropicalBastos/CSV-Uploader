@@ -20,15 +20,15 @@ function checkUser($u, $p){
 
     if(!$result){
         $_SESSION['loginfailed'] = "failed";
-        header("Location: ../index.php");
+        header("Location: ../index");
     }else{
         if($result->num_rows > 0){
             $row = $result->fetch_row();
             $_SESSION['user'] = $row[1];
-            header("Location: /account/dashboard.php");
+            header("Location: /account/dashboard");
         }else{
             $_SESSION['loginfailed'] = "failed";
-            header("Location: ../index.php");
+            header("Location: ../index");
         }
     }
 

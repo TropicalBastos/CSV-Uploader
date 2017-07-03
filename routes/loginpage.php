@@ -32,7 +32,7 @@ if(!isset($_SESSION)){
      ?>
   </div>
   <div class="register-link" >
-    <a href="/routes/registerpage.php">Dont have an account? Register here!</a>
+    <a href="/routes/registerpage">Dont have an account? Register here!</a>
   </div>
   </body>
 </html>

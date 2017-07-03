@@ -32,7 +32,7 @@ if(isset($_SESSION)){
     </form>
   </div>
   <div class="register-link" >
-    <a href="/routes/loginpage.php">Have an account? Login here!</a>
+    <a href="/routes/loginpage">Have an account? Login here!</a>
   </div>
   <script src="/js/register.js"></script>
   <?php if(isset($_GET['error'])): ?>

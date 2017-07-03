@@ -1,7 +1,7 @@
 <?php
 
 if(isset($_SESSION)){
-    header("Location: /account/dashboard.php");
+    header("Location: /account/dashboard");
     die();
   }
 
@@ -39,7 +39,7 @@ if(strlen($user) > 5
     }else{
         session_start();
         $_SESSION['user'] = $user;
-        header("Location: /account/dashboard.php");
+        header("Location: /account/dashboard");
     }
 }else{
     header("Location: /routes/registerpage.php?error=failed");
