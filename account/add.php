@@ -50,12 +50,12 @@ if(!$result){
 
 function addError(){
     $_SESSION['add_error'] = true;
-    header("Location: /account/dashboard.php");
+    header("Location: /account/dashboard");
 }
 
 function success(){
     $_SESSION['added'] = true;
-    header("Location: /account/dashboard.php");
+    header("Location: /account/dashboard");
 }
 
 ?>
