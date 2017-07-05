@@ -6,8 +6,15 @@ body{
     margin: 0;
 }
 
+th{
+    text-align: left;
+    font-size: 20px;
+}
+
 td{
+    text-align: left;
     width: 30%;
+    font-size: 18px;
 }
 
 input[type="file"]{
@@ -428,6 +435,14 @@ input[type="file"]{
     cursor: default !important;
 }
 
+th{
+    pointer-events: none;
+}
+
+.clickable-col{
+    cursor: pointer;
+    pointer-events: auto;
+}
 
 #style-2::-webkit-scrollbar-track
 {
@@ -470,13 +485,27 @@ input[type="file"]{
     }
 }
 
-@media screen and (max-width: 800px){
-    .table-wrapper{
-        font-size: 1.2em;
-        font-weight: bold;
+@media screen and (max-width: 950px){
+    th{
+        font-size: 16px;
     }
+    td{
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 800px){
     .view-div{
         font-size: 0.7em;
+    }
+     th{
+        font-size: 12px;
+    }
+    td{
+        font-size: 12px;
+    }
+    .content{
+        width: 100%;
     }
 }
 
@@ -486,6 +515,12 @@ input[type="file"]{
     }
     .success{
         top: -35px;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .extra-col{
+        display: none;
     }
 }
 
@@ -499,10 +534,6 @@ input[type="file"]{
 }
 
 @media screen and (max-width: 450px){
-    .table-wrapper{
-        font-size: 0.75em;
-        font-weight: bold;
-    }
     .content{
         width: 100%;
         margin: 0;

@@ -25,6 +25,7 @@ $result = $conn->query($query);
     <link rel="stylesheet" type="text/css" href="/css/dashboard.css"/>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link rel="icon" type="image/png" href="/res/logo.png"/>
+    <script src="/js/sorttable.js"></script>
   </head>
   <body>
 
@@ -72,11 +73,13 @@ $result = $conn->query($query);
         </div>
         <?php if($result->num_rows >= 1): ?>
       <div id="style-2" class="table-wrapper">
-        <table id="maintable">
+        <table class="sortable" id="maintable">
           <tr>
             <th>Select</th>
-            <th>First Name</th>
-            <th>Last Name</th>
+            <th id="sort-first" class="clickable-col">First Name</th>
+            <th id="sort-last" class="clickable-col">Last Name</th>
+            <th id="sort-company" class="extra-col clickable-col">Company</th>
+            <th id="sort-chapter" class="extra-col clickable-col">Chapter Name</th>
             <th>View</th>
           </tr>
           <?php while(($row = $result->fetch_row()) != null){?>
@@ -84,6 +87,8 @@ $result = $conn->query($query);
             <td><input type="checkbox"/></td>
             <td><?php echo $row[1] ?></td>
             <td><?php echo $row[2] ?></td>
+            <td class="extra-col"><?php echo $row[3] ?></td>
+            <td class="extra-col"><?php echo $row[4] ?></td>
             <td class="view-more">View more...</td>
             <td hidden class="cellId"><?php echo $row[0] ?></td>
             <?php foreach($row as $value){?>
